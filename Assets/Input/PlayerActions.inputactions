@@ -1,0 +1,18 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "main",
+            "id": "009bad77-5b35-4da2-bdf5-0d4275cf6522",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PlayerControls",
+            "bindingGroup": "PlayerControls",
+            "devices": []
+        }
+    ]
+}
