@@ -65,17 +65,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            GameObject torch = GameObject.Find("TORCH");
-            PickupableItem torchItem = torch.GetComponent<PickupableItem>();
-            PickupItem(torchItem);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            DropItem(inventory[0]);
-        }
-    }
+    // DEBUG DAT BOSS
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Q))
+    //     {
+    //         GameObject torch = GameObject.Find("TORCH");
+    //         PickupableItem torchItem = torch.GetComponent<PickupableItem>();
+    //         PickupItem(torchItem);
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         DropItem(inventory[0]);
+    //     }
+    // }
 }
