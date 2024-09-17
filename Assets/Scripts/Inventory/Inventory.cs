@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         if (inventory.Count > 0)
         {
             InventoryItem foundItem;
-            if (foundItem = inventory.Find(e => e.Name == itemToDrop.Name))
+            if (foundItem = FindItem(itemToDrop.Name))
             {
                 GameObject droppedItem = new GameObject();
                 droppedItem.AddComponent<Rigidbody>();
@@ -30,12 +30,17 @@ public class Inventory : MonoBehaviour
     {
         if (inventory.Count < MAX_ITEMS)
         {
-            if (!inventory.Find(e => e.Name != itemToPickup.item.Name))
+            if (!FindItem(itemToPickup.item.Name))
             {
                 InventoryItem item = itemToPickup.Pickup();
                 inventory.Add(item);
             }
         }
+    }
+
+    private InventoryItem FindItem(String name)
+    {
+        return inventory.Find(e => e.Name == name);
     }
 
     // DEBUG DAT BOSS
