@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,11 +45,37 @@ public class Inventory : MonoBehaviour
             {
                 GameObject droppedItem = new GameObject();
                 droppedItem.AddComponent<Rigidbody>();
-                droppedItem.AddComponent<InventoryItemInstance>().item = foundItem;
+                droppedItem.AddComponent<PickupableItem>().item = foundItem;
                 GameObject itemModel = Instantiate(foundItem.Obj, droppedItem.transform);
 
                 inventory.Remove(foundItem);
             }
+        }
+    }
+
+    public void PickupItem(PickupableItem itemToPickup)
+    {
+        if (inventory.Count < MAX_ITEMS)
+        {
+            if (!inventory.Find(e => e.Name != itemToPickup.item.Name))
+            {
+                InventoryItem item = itemToPickup.Pickup();
+                inventory.Add(item);
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameObject torch = GameObject.Find("TORCH");
+            PickupableItem torchItem = torch.GetComponent<PickupableItem>();
+            PickupItem(torchItem);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DropItem(inventory[0]);
         }
     }
 }

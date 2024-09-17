@@ -11,14 +11,3 @@ public class InventoryItem : ScriptableObject
     [TextArea]
     public string Description;
 }
-
-public class InventoryItemInstance : MonoBehaviour
-{
-    public InventoryItem item;
-
-    public InventoryItem Pickup()
-    {
-        Destroy(gameObject);
-        return item;
-    }
-}
